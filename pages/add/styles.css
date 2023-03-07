@@ -1,0 +1,98 @@
+/* Header */
+#top-bar h2 {
+  justify-content: center;
+  display: flex;
+  background-color: #292b75;
+  align-items: center;
+  color: white;
+}
+#top-bar img {
+  justify-content: center;
+  display: flex;
+  align-items: center;
+  width: 3.2rem;
+  /*margin: 0 0.2rem 0 0;*/
+  margin-left: 45%;
+}
+#bottom-bar h2 {
+  justify-content: center;
+  display: flex;
+  background-color: #292b75;
+  align-items: center;
+  color: white;
+}
+/* Fields */
+#song-add-form .field {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+#song-add-form .field label {
+  display: block;
+  justify-content: center;
+  align-items: center;
+  width: 100px;
+  line-height: 30px;
+}
+
+#song-add-form .field input {
+  width: 230px;
+  font-size: 1.3rem;
+  padding: 5px 10px;
+  box-sizing: border-box;
+  border: solid 1px #64646e;
+  background-color: #fff;
+}
+/* Button */
+#song-add-form button {
+  display: block;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.3rem;
+  padding: 0.85rem 2rem;
+  margin: 0 0 0 100px;
+  margin-left: 42%;
+  background-color: #f6820d;
+  border: none;
+  color: #fff;
+}
+.song-item {
+  background: #50cdf3;
+  border-radius: 0.5em;
+}
+.remove-Button {
+  background-color: red;
+  margin-left: 11px;
+}
+.likeButton {
+  background-color: skyblue;
+  margin-left: 230px;
+}
+.likeCount {
+  color: #292b75;
+}
+
+.song-failure {
+  border-color: #c00;
+  color: #c00;
+}
+
+@media screen and (min-width: 1000px) {
+  .container {
+    flex-direction: column;
+  }
+  .h1 {
+    text-align: left;
+  }
+  #song-add-form {
+    flex-direction: row;
+  }
+}
+
+@media screen and (min-width: 1300px) {
+  .container {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+}
