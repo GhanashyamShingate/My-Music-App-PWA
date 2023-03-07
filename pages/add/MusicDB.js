@@ -275,6 +275,33 @@ class MusicDB {
     });
   }
 
+  update(updatedLikeCount) {
+    return new Promise((resolve, reject) => {
+      if (!this.isAvailable) {
+        reject("The database is not available.");
+        return;
+      }
+
+      try {
+        // Get the document reference.
+        const docRef = doc(this.db, this.storeName, updatedLikeCount.id);
+
+        // Updates the document.
+        updateDoc(docRef, {
+          likeCount: updatedLikeCount.likeCount,
+        })
+          .then(() => {
+            resolve();
+          })
+          .catch((error) => {
+            reject(error);
+          });
+      } catch (error) {
+        reject(error.message);
+      }
+    });
+  }
+
   /**
    * Removes an entry from the database.
    */

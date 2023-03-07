@@ -18,6 +18,7 @@ MusicDB.open()
 
 // Gets the user input.
 document.getElementById("add-button").addEventListener("click", () => {
+  document.getElementById("list-output").innerText = "";
   const title = document.getElementById("song-title").value;
   const artist = document.getElementById("song-artist").value;
   //MusicDB.add(title, artist);
@@ -86,14 +87,14 @@ function songList(Song) {
   document.getElementById("list-output").append(elemSong);
 
   // Includes the artist.
-  const elemArtist = document.createElement("h2");
-  elemArtist.innerText = Song.artist;
-  elemSong.append(elemArtist);
-
-  // Includes the title.
-  const elemTitle = document.createElement("h3");
+  const elemTitle = document.createElement("h2");
   elemTitle.innerText = Song.title;
   elemSong.append(elemTitle);
+
+  // Includes the title.
+  const elemArtist = document.createElement("h3");
+  elemArtist.innerText = Song.artist;
+  elemSong.append(elemArtist);
 
   // const elemRemLike = document.createElement("div");
   // elemRemLike.className = "remove-like";
@@ -157,17 +158,18 @@ function renderLikeButton(Song, elemSong) {
   LikeButton.addEventListener("click", () => {
     // Includes the Like Count.
 
-    const LikeCount = document.createElement("h4");
-    LikeCount.innerText = Song.count;
-    LikeCount.className = "Like";
-    elemSong.append(LikeCount);
+    const LikeCnt = document.createElement("span");
+    //LikeCnt.innerText = Song.likeCount;
+    LikeCnt.className = "Like";
 
-    // Includes the status label.
-    const elemStatusLabel = document.createElement("span");
-    elemStatus.append(elemStatusLabel);
-    writeStatusLabel(elemStatusLabel, game.hasFinished);
-
-    renderUpdateButton(game, elemGame, elemStatusLabel);
+    MusicDB.update(Song)
+      .then(() => {
+        console.log("inside then");
+        writeLikeCount(LikeCnt, Song.id.likeCount, elemSong);
+      })
+      .catch((error) => {
+        console.log("Failed to update", error);
+      });
   });
 }
 /**
@@ -180,6 +182,11 @@ function displayErrorMessage(error) {
       <span>${error}</span>
     </div>
   `;
+}
+
+function writeLikeCount(LikeCnt, likeCount) {
+  LikeCnt.innerText = likeCount + 1;
+  elemSong.append(LikeCnt);
 }
 
 /**
