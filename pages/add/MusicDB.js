@@ -15,7 +15,7 @@ import {
 } from "https://www.gstatic.com/firebasejs/9.17.2/firebase-firestore.js";
 
 /**
- * GameDB Interface using Firebase Firestore
+ * MusicDB Interface using Firebase Firestore
  */
 class MusicDB {
   constructor() {
@@ -67,7 +67,7 @@ class MusicDB {
   }
 
   /**
-   * Adds a new game to the database.
+   * Adds a new song to the database.
    */
   add(title, artist) {
     console.log("Song Add", title, artist);
